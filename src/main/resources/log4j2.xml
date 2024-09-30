@@ -1,0 +1,22 @@
+<Configuration status="INFO">
+    <Appenders>
+        <RollingFile
+            name="rollingFile"
+            fileName="/u02/eirsdata/logs/logs.log"
+            filePattern="/u02/eirsdata/logs/logs-%d{dd-MMM}.log"
+            ignoreExceptions="false">
+            <PatternLayout>
+                <Pattern>%d{yyy-MM-dd HH:mm:ss.SSS} %-5level %logger{36} :%L - %msg%n</Pattern>
+            </PatternLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1"/>
+            </Policies>
+            <DefaultRolloverStrategy max="5" />
+        </RollingFile>
+    </Appenders>
+    <Loggers>
+        <Root level="info">
+            <AppenderRef ref="rollingFile" />
+        </Root>
+    </Loggers>
+</Configuration>
