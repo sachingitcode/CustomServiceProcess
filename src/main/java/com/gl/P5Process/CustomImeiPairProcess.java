@@ -63,8 +63,8 @@ public class CustomImeiPairProcess {
     }
 
     private static void insertInExceptionListHis(Connection conn, String subquery, String remark) { //GDCE_TAX_PAID
-        String q = "insert into exception_list_his (actual_imei, imei,imsi , msisdn ,operator_id , operator_name, complaint_type, expiry_date , mode_type , request_type , txn_id , user_id , user_type ,tac ,remarks,source ,action ,action_remark ,operation )" +
-                " select actual_imei, imei,imsi , msisdn ,operator_id , operator_name, complaint_type, expiry_date , mode_type , request_type , txn_id , user_id , user_type ,tac ,remarks,'" + remark + "' ,'DELETE','" + remark + "' , 0 from exception_list " +
+        String q = "insert into exception_list_his (actual_imei, imei,imsi , msisdn ,operator_id , operator_name, complaint_type, expiry_date , mode_type , request_type , txn_id , user_id , user_type ,tac ,remark,source ,action ,action_remark ,operation )" +
+                " select actual_imei, imei,imsi , msisdn ,operator_id , operator_name, complaint_type, expiry_date , mode_type , request_type , txn_id , user_id , user_type ,tac ,remark,'" + remark + "' ,'DELETE','" + remark + "' , 0 from exception_list " +
                 " where imei in( " + subquery + " )";
         runQuery(conn, q);
     }
@@ -92,8 +92,8 @@ public class CustomImeiPairProcess {
     }
 
     private static void insertInBlackListHis(Connection conn, String subquery, String remark, String source) {
-        String q = "insert into black_list_his (actual_imei, imei,imsi , msisdn ,operator_id , operator_name, complaint_type, expiry_date , mode_type , request_type , txn_id , user_id , user_type ,tac ,remarks,source ,action ,action_remark ) " +
-                " select actual_imei, imei,imsi , msisdn ,operator_id , operator_name, complaint_type, expiry_date , mode_type , request_type , txn_id , user_id , user_type ,tac ,remarks, source ,'DELETE','" + remark + "' from black_list" +
+        String q = "insert into black_list_his (actual_imei, imei,imsi , msisdn ,operator_id , operator_name, complaint_type, expiry_date , mode_type , request_type , txn_id , user_id , user_type ,tac ,remark,source ,action ,action_remark ) " +
+                " select actual_imei, imei,imsi , msisdn ,operator_id , operator_name, complaint_type, expiry_date , mode_type , request_type , txn_id , user_id , user_type ,tac ,remark, source ,'DELETE','" + remark + "' from black_list" +
                 " where imei in(" + subquery + ") and source='" + source + "' ";
         runQuery(conn, q);
     }
