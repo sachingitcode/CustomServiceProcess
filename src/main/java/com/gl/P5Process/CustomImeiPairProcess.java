@@ -49,7 +49,7 @@ public class CustomImeiPairProcess {
                 "updated_filename,update_imei_arrival_time,update_raw_cdr_file_name,update_source ,gdce_imei_status,gdce_modified_time) " +
                 "select action,actual_imei,actual_operator,create_filename,created_on,failed_rule_date, " +
                 "failed_rule_id,failed_rule_name,feature_name, imei,imei_arrival_time,imsi, is_used,mobile_operator, " +
-                "msisdn,period,raw_cdr_file_name,record_time,record_type,server_origin,source,system_type,tac,tax_paid,test_imei, " +
+                "msisdn,period,raw_cdr_file_name,record_time,record_type,server_origin,source,system_type,tac,tax_paid,is_test_imei, " +
                 "update_filename,update_imei_arrival_time,update_raw_cdr_file_name,update_source , " + status + ", CURRENT_TIMESTAMP" +
                 " from active_unique_imei  where imei in(select distinct imei from imei_pair_detail where imei in " +
                 "(SELECT  gdce_data.imei FROM gdce_data  LEFT JOIN national_whitelist on gdce_data.imei = national_whitelist.imei WHERE  national_whitelist.imei IS NULL" +
