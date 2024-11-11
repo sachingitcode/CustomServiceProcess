@@ -22,7 +22,7 @@ public class CustomImeiPairProcess {
         var subQuery = " select a.imei  from " + table + " a, imei_pair_detail b " +
                 " where a.imei=b.imei and a.created_on >= ( select IFNULL(value, '2000-01-01') from sys_param where tag ='" + lastRunTime + "' ) ";
 
-        insertNwlFromGdceOnPairRecordTime(conn, subQuery, status);
+        insertNwlFromGdceOnPairRecordTime(conn, lastRunTime, status);
         insertInImeiPairHis(conn, subQuery, remark);
 
         insertInExceptionListHis(conn, subQuery, remark);
